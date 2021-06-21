@@ -1,10 +1,15 @@
-#!/bin/bash -x
+#!/bin/bash
 
-echo this script takes 3 parameters in the following order: gitlab token, codecommit user, codecommit password. 
-echo eg.: 3.create-mirrors.sh MyT0keNLoNGsTr1nG git-user pas$W0rD
+if [ $# -eq 0 ]; then
+        echo "this script takes 3 arguments in the following order: gitlab token, codecommit user, codecommit password. "
+        echo "eg.: 3.create-mirrors.sh MyT0keNLoNGsTr1nG git-user pas$W0rD"
+        echo
+        echo "No arguments provided, exiting..."
+    exit 1
+fi
 
 gitlab_token=$1
 aws_git_user=$2
 aws_git_password=$3
 
-newman run -d tmp-detail-list.csv --global-var "gLabToken=$gitlab_token" --global-var "CClogin=$aws_git_user" --global-var \"CCpass=$aws_git_password\" gitlab-automation.postman_collection.json | tee tmp-mirror.log
+npx newman run -d tmp-detail-list.csv --global-var "gLabToken=$gitlab_token" --global-var "CClogin=$aws_git_user" --global-var \"CCpass=$aws_git_password\" gitlab-automation.postman_collection.json | tee tmp-mirror.log
