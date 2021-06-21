@@ -1,10 +1,14 @@
 #!/bin/bash
 
-if [ $# -eq 0 ]; then
-        echo "this script takes 3 arguments in the following order: gitlab token, codecommit user, codecommit password. "
-        echo "eg.: 3.create-mirrors.sh MyT0keNLoNGsTr1nG git-user pas$W0rD"
+if [ "$#" -ne 3 ]; then
         echo
-        echo "No arguments provided, exiting..."
+        echo "this script takes 3 arguments in the following order: gitlab token, codecommit user, codecommit password. "
+        echo 'eg.:'
+        echo
+        echo './3.create-mirrors.sh MyT0keNLoNGsTr1nG git-user pas$W0rD'
+        echo
+        echo "Wrong number of arguments, exiting..."
+        echo
     exit 1
 fi
 
