@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "40747f86-2d65-4eb0-8e24-e18e30cf5570",
+		"name": "gitlab-automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create mirror project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data1 = responseBody;\r",
+							"console.log(pm.variables.get('repositoryName'));\r",
+							"console.log(data1);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () { pm.response.to.have.status(201); });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{gLabToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://gitlab.com/api/v4/projects?path={{repositoryName}}&description={{repositoryDescription}}&import_url=https://{{CClogin}}:{{CCpass}}@git-codecommit.ap-southeast-2.amazonaws.com/v1/repos/{{repositoryName}}.git&mirror=1&namespace_id=12143676",
+					"protocol": "https",
+					"host": [
+						"gitlab",
+						"com"
+					],
+					"path": [
+						"api",
+						"v4",
+						"projects"
+					],
+					"query": [
+						{
+							"key": "path",
+							"value": "{{repositoryName}}"
+						},
+						{
+							"key": "description",
+							"value": "{{repositoryDescription}}"
+						},
+						{
+							"key": "import_url",
+							"value": "https://{{CClogin}}:{{CCpass}}@git-codecommit.ap-southeast-2.amazonaws.com/v1/repos/{{repositoryName}}.git"
+						},
+						{
+							"key": "mirror",
+							"value": "1"
+						},
+						{
+							"key": "namespace_id",
+							"value": "12143676"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
