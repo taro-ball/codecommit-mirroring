@@ -16,4 +16,4 @@ gitlab_token=$1
 aws_git_user=$2
 aws_git_password=$3
 
-npx newman run -d tmp-detail-list.csv --global-var "gLabToken=$gitlab_token" --global-var "CClogin=$aws_git_user" --global-var \"CCpass=$aws_git_password\" gitlab-automation.postman_collection.json | tee tmp-mirror.log
+npx newman run -d tmp-detail-list.csv --global-var "gLabToken=$gitlab_token" --global-var CClogin=${aws_git_user} --global-var CCpass=${aws_git_password} gitlab-automation.postman_collection.json | tee tmp-mirror.log
