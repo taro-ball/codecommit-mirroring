@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo please remember to authenticate as CommonTools account
-echo this may take a couple of minutes...
+echo Please remember to authenticate as CommonTools account.
+echo This may take a couple of minutes. Run "tail -f tmp-repo-list.json" in another tab if you want to check the progress.
 
 # Get repo properties list: 
 aws codecommit list-repositories | jq '.repositories[].repositoryName' | grep \"hip | xargs -L 1 aws codecommit get-repository --repository-name | jq ".repositoryMetadata | {repositoryName,repositoryDescription,cloneUrlHttp, lastModifiedDate,creationDate}" > tmp-repo-list.json
