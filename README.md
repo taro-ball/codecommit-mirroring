@@ -10,18 +10,15 @@ NOTE: the region is hardcoded as ap-southeast-2
 * CodeCommit credentials 
 
 ## Process:
-Open the AWS CloudShell and authenticate with AWS account holding the repos you want to mirror using AWS environment variables
+1. Open the AWS CloudShell and authenticate with AWS account holding the repos you want to mirror (e.g. using AWS environment variables)
 
-Clone this repo 
+1. Clone this repo 
 
-Create the CSV repo list by running 1.create-repo-csv.sh 
+1. Create the CSV repo list by running `1.create-repo-csv.sh`
 
-(optional) open the CSV list with excel and review/delete the repos you don’t want to sync
+1. (optional) open the CSV list with excel and review/delete the repos you don’t want to sync
 
-install Newman by running 2.newman_install.sh 
+1. install Newman by running `2.newman_install.sh`
 
-Create the mirrors in GitLab by running 3.create-mirrors.sh with 3 parameters in the following order: GitLab token, CodeCommit user, CodeCommit password
-eg. :
-
-
-./3.create-mirrors.sh MyT0keNLoNGsTr1nG aws-git-user pas$W0rD
+1. Create the mirrors in GitLab by running `3.create-mirrors.sh` with 3 parameters in the following order: GitLab token, CodeCommit user, CodeCommit password.  
+eg. : `./3.create-mirrors.sh MyT0keNLoNGsTr1nG aws-git-user pas$W0rD`
